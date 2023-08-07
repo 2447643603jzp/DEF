@@ -86,6 +86,30 @@ roslaunch plan_manage rsastar_replan.launch
 Press "G" to give the goal.
 
 
+## *** Note ***
+All the code in this library may only be understood by me and God, so it's best not to use this library. So here are some related articles and Github's library that may have some impact. Firstly, for the pre recognition and prediction part, the detectors and predictors we use are inspired by the following:  
+
+1.A real-time dynamic obstacle tracking and mapping system for UAV navigation and collision avoidance with an RGB-D camera -- [PDF](https://arxiv.org/abs/2209.08258)  [Github](https://github.com/Shawn207/map_manager)  
+2.Perception-Aware Trajectory Planner in Dynamic Environments -- [PDF](https://arxiv.org/abs/2103.06372) [Github](https://github.com/mit-acl/panther)  
+3.Perception and Avoidance of Multiple Small Fast Moving Objects for Quadrotors with Only Low-cost RGBD Camera --  [Github](https://github.com/arclab-hku/fast-dodging)  
+
+The following is the code for the relevant planning, which includes the corresponding module for mapping.  
+1.EGO-Planner: An ESDF-free Gradient-based Local Planner for Quadrotors  -- [PDF](https://arxiv.org/abs/2008.08835)  [Github](https://github.com/ZJU-FAST-Lab/ego-planner)  
+2.Continuous Occupancy Mapping in Dynamic Environments Using Particles  -- [PDF](https://arxiv.org/abs/2202.06273)  [Github](https://github.com/g-ch/DSP-map)  
+3.Robust and Efficient Quadrotor Trajectory Generation for Fast Autonomous Flight  -- [PDF](https://arxiv.org/abs/1907.01531)  [Github](https://github.com/HKUST-Aerial-Robotics/Fast-Planner)  
+4.Fast and Safe Trajectory Planner for Navigation in Unknown Environments  -- [PDF](https://arxiv.org/abs/2001.04420)  [Github](https://github.com/mit-acl/faster)  
+5.MADER: Trajectory Planner in Multi-Agent and Dynamic Environments  -- [PDF](https://arxiv.org/abs/2010.11061)  [Github](https://github.com/mit-acl/mader)  
+6.Risk-aware Trajectory Sampling for Quadrotor Obstacle Avoidance in Dynamic Environments  -- [PDF](https://arxiv.org/abs/2202.06273)  [Github](https://github.com/g-ch/RAST_corridor_planning)  
+7.Elastic Tracker: A Spatio-temporal Trajectory Planner Flexible Aerial Tracking -- [PDF](https://arxiv.org/abs/2109.07111)  [Github](https://github.com/ZJU-FAST-Lab/Elastic-Tracker) 
+8.Real-Time Trajectory Replanning for MAVs using Uniform B-splines and 3D Circular Buffer  -- [PDF](https://arxiv.org/abs/1703.01416)  [Github](https://github.com/VladyslavUsenko/ewok)  
+9.Robust Vision-based Obstacle Avoidance for Micro Aerial Vehicles in Dynamic Environments  -- [PDF](https://arxiv.org/abs/2002.04920)  [Github](https://github.com/tud-amr/mrca-mav)  
+10.Real-time Trajectory Generation for Quadrotors using B-spline based Non-uniform Kinodynamic Search  -- [PDF](https://arxiv.org/abs/1904.12348)  [Github](https://github.com/tlb9551/BNUKsearch) 
+11.Multi-Agent Trajectory Planning in Dynamic Environments with Occupancy Prediction -- [Github](https://github.com/xxje-library/pred-occ-planner)  
+
+some other github  
+[traj_opt](https://github.com/edmundwsy/traj_opt)  
+[PRM_OPT](https://github.com/edmundwsy/RO47005-PDM-Final)  
+[motion planning](https://github.com/GPrathap/motion_planning)
 
 
 
