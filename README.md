@@ -12,6 +12,10 @@ These two libraries do not need to be deliberately studied, just learned during 
 ## How to use the current repository  
 This library is actually pieced together by many corresponding libraries, using many libraries, resulting in a relatively awkward situation. And the implementation effect is not particularly good, in fact, it may be an essential starting point design issue, and the first step is to build the corresponding simulation environment.  
 ### GAZEBO Environment  
+```bash
+git clone -b v1.12.3 https://github.com/PX4/PX4-Autopilot.git --recursive     
+```
+
 
 
 
