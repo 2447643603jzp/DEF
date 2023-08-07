@@ -7,7 +7,7 @@ Here are some links related to ROS learning：
 1.[wiki](http://wiki.ros.org/ROS/Tutorials)  
 2.[古月居](https://www.bilibili.com/video/BV1zt411G7Vn/?spm_id_from=333.337.search-card.all.click&vd_source=d6ea4dbc61d9452fed12a5669810253d)  
 ## Opencv and PCl  
-These two libraries do not need to be deliberately studied, just learned during use. We use the version that comes with the system for PCL. We can install opencv in “ /additional bag " folder. First, extract it and enter the folder:
+These two libraries do not need to be deliberately studied, just learned during use. We use the version that comes with the system for PCL. We can download opencv-4.5-* in [website](https://opencv.org/releases/) . First, extract it and enter the folder:
 ```bash
 cd opencv
 madir build
@@ -30,6 +30,43 @@ export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/PX4-Autopilot/Tools/sitl_gazebo
 source ~/.bashrc
 ```
 We use iris_depth_camera model and the world which is chose by you. you can see the model in " ~/PX4-Autopilot/Tools/sitl_gazebo/models " and world in " ~/PX4-Autopilot/Tools/sitl_gazebo/worlds ". The initial file connection to Mavros is in " ~/PX4-Autopilot/launch " which is called " mavros_posix_sitl.launch ". As show in the picture, you can change the position, orientation and model,world. [Mavros](http://wiki.ros.org/mavros) is a secondary wrapper used for controlling drones and onboard computers. There are somethings about it.  
+
+![image](https://github.com/xxje-library/DEF/blob/main/picture/mavros.png)  
+### Eigen3  
+```bash
+sudo apt-get install libeigen3-dev
+```
+### [OpenVINO](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit/download.html)  
+you will get a l_openvino_toolkit_p_<version>.tgz. It should be 2021 version. Unzip it and Enter folder.
+```bash
+sudo ./install_GUI.sh
+
+cd opt/intel/openvino_2021/install_dependencie
+sudo -E ./install_openvino_dependencies.sh
+
+sudo gedit ~/.bashrc
+source /opt/intel/openvino_2021/bin/setupvars.sh
+source ~/.bashrc
+```
+you will see " [setupvars.sh] OpenVINO environment initialized ". The purpose of this module is neural network recognition, and we are using the Openvino version of [Nanodet](https://github.com/RangiLyu/nanodet).  
+
+### [GLPK](http://ftp.gnu.org/gnu/glpk/)  
+The version is 5.0. Enter the folder.
+```bash
+cd glpk
+configure
+make -j8
+sudo make install
+```
+All the necessary files have been installed above, and below, all you need to do is use the library.
+```bash
+cd DEF
+catkin_make
+source devel/setup.bash
+roslaunch plan_manage rsastar_replan.launch
+```
+
+
 
 
 
