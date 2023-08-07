@@ -58,13 +58,32 @@ configure
 make -j8
 sudo make install
 ```
+
+### Test
 All the necessary files have been installed above, and below, all you need to do is use the library.
+#### Step1  
+```bash
+roscore
+```
+#### Step2  
+```bash
+roslaunch px4 mavros_posix_sitl.launch
+```
+#### Step3 
+```bash
+cd key_control
+python3 communicate.py
+python3 key.py
+```
+you should press "t" "b" to arm UAV and press"i" "s" to fly and hover.
+#### Step4
 ```bash
 cd DEF
 catkin_make
 source devel/setup.bash
 roslaunch plan_manage rsastar_replan.launch
 ```
+Press "G" to give the goal.
 
 
 
