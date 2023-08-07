@@ -1,0 +1,18 @@
+<launch>
+
+<node pkg="detector" name="detector" type="box_detector" output="screen">
+    <param name="detector/mode" value="1" type="int"/>
+    <param name="detector/depthTopicName" value="/camera/depth/image_raw" type="string"/>
+    <param name="detector/poseTopicName" value="/mavros/local_position/pose" type="string"/>
+    <param name="detector/odomTopicName" value="/mavros/local_position/odom" type="string"/>
+    <param name="detector/imageTopicName" value="/camera/rgb/image_raw" type="string"/>
+
+
+    <param name="sdf_map/cx" value="320.5"/>
+    <param name="sdf_map/cy" value="240.5"/>
+    <param name="sdf_map/fx" value="565.6008952774197"/>
+    <param name="sdf_map/fy" value="565.6008952774197"/>
+    <!-- depth filter -->
+    <param name="sdf_map/k_depth_scaling_factor" value="1000.0"/>
+</node>
+</launch>

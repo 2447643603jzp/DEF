@@ -1,0 +1,61 @@
+<launch>
+  <!-- size of map, change the size in x, y, z according to your application  rosparam set /use_sim_time true-->
+  <param name="use_sim_time" value="true"/>
+  <arg name="map_size_x" value="20.0"/>
+  <arg name="map_size_y" value="20.0"/>
+  <arg name="map_size_z" value="6.0"/>
+
+  <!-- topic of your odometry such as VIO or LIO -->
+  <arg name="odom_topic" value="/mavros/local_position/odom" />
+
+  <!-- main algorithm params -->
+  <include file="$(find plan_manage)/launch/rsastar_algorithm.xml">
+
+    <arg name="map_size_x_" value="$(arg map_size_x)"/>
+    <arg name="map_size_y_" value="$(arg map_size_y)"/>
+    <arg name="map_size_z_" value="$(arg map_size_z)"/>
+    <arg name="odometry_topic" value="$(arg odom_topic)"/>
+
+    <!-- camera pose: transform of camera frame in the world frame -->
+    <!-- depth topic: depth image, 640x480 by default -->
+    <!-- don't set cloud_topic if you already set these ones! -->
+    <arg name="camera_pose_topic" value="/pcl_render_node/camera_pose"/>
+    <arg name="depth_topic" value="/camera/depth/image_raw"/>
+    <!-- <arg name="depth_topic" value="/camera/depth/image_rect_raw"/> -->
+
+    <!-- <arg name="image_topic" value="/camera/infra1/image_rect_raw"/> -->
+    <arg name="image_topic" value="/camera/rgb/image_raw"/>
+    <arg name="depth_out_topic" value="/camera/depthImage/output"/>
+
+    <!-- topic of point cloud measurement, such as from LIDAR  -->
+    <!-- don't set camera pose and depth, if you already set this one! -->
+    <arg name="cloud_topic" value="/pcl_render_node/cloud"/>
+
+    <!-- intrinsic params of the depth camera -->
+    <arg name="cx" value="320.5"/>
+    <arg name="cy" value="240.5"/>
+    <arg name="fx" value="565.6008952774197"/>
+    <arg name="fy" value="565.6008952774197"/>
+
+    <!-- maximum velocity and acceleration the drone will reach 2,8,0.25  0.9 5 0.3-->
+    <arg name="max_vel" value="0.9" />
+    <arg name="max_acc" value="5.0" />
+
+    <!-- 1: use 2D Nav Goal to select goal  -->
+    <!-- 2: use global waypoints below  -->
+    <!-- <arg name="flight_type" value="1" /> -->
+    
+  </include>
+
+  <!-- trajectory server -->
+  <node pkg="plan_manage" name="traj_server" type="traj_server" output="screen">
+    <remap from="/position_cmd" to="planning/pos_cmd"/>
+    <remap from="/pose_cmd" to="/cmd_pose_enu"/>
+    <remap from="/odom_world" to="$(arg odom_topic)"/>
+    <param name="traj_server/time_forward" value="1.0" type="double"/>
+  </node>
+  
+  <node pkg="tf" type="static_transform_publisher" name="world_to_map" args="0 0 0 0 0 0  world map 10"/>
+  <node name="rvizvisualisation" pkg="rviz" type="rviz" output="log" args="-d $(find plan_manage)/config/scene.rviz" />
+  <!-- gazebo仿真类似真机的飞行 -->
+</launch>
