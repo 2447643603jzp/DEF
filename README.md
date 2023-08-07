@@ -15,8 +15,15 @@ This library is actually pieced together by many corresponding libraries, using 
 ```bash
 git clone -b v1.12.3 https://github.com/PX4/PX4-Autopilot.git --recursive     
 ```
-
-
+add the bashrc file  
+```bash
+source ~/PX4-Autopilot/Tools/setup_gazebo.bash ~/PX4-Autopilot/ ~/PX4-Autopilot/build/px4_sitl_default
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/PX4-Autopilot
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/PX4-Autopilot/Tools/sitl_gazebo
+source ~/.bashrc
+```
+We use iris_depth_camera model and the world which is chose by you. you can see the model in " ~/PX4-Autopilot/Tools/sitl_gazebo/models " and world in " ~/PX4-Autopilot/Tools/sitl_gazebo/worlds ".  
+The initial file connection to Mavros is in " ~/PX4-Autopilot/launch " which is called " mavros_posix_sitl.launch ".
 
 
 
